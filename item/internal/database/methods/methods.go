@@ -92,3 +92,18 @@ func (u *Database) ItemDelete(ctx context.Context, req *models.GetItemRequest) (
 	}
 	return &models.DeleteResponse{Message: fmt.Sprintf("Item has been deleted with this id %v", req.ID)}, nil
 }
+
+func (u *Database) ItemLastInserted(ctx context.Context) (*models.GeneralItem, error) {
+	query, args, err := sqlbuilder.LastInserted()
+	if err != nil {
+		log.Println(err)
+		return nil, err
+	}
+	var res models.GeneralItem
+
+	if err := u.Db.QueryRow(query, args...).Scan(&res.ID, &res.Username, &res.Name, &res.Type, &res.Amount); err != nil {
+		log.Println(err)
+		return nil, err
+	}
+	return &res, nil
+}

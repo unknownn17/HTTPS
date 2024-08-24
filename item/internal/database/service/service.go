@@ -29,3 +29,7 @@ func (u *Service) ItemUpdate(ctx context.Context, req *models.GeneralItem) (*mod
 func (u *Service) ItemDelete(ctx context.Context, req *models.GetItemRequest) (*models.DeleteResponse, error) {
 	return u.I.ItemDelete(ctx, req)
 }
+
+func (u *Service) ItemLastInserted(ctx context.Context) (*models.GeneralItem, error) {
+	return u.I.ItemLastInserted(ctx)
+}

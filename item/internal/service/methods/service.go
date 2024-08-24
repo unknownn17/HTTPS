@@ -56,3 +56,12 @@ func (u *GrpcService) ItemDelete(ctx context.Context, req *item.GetItemRequest) 
 	}
 	return res, nil
 }
+
+func (u *GrpcService) ItemLastInserted(ctx context.Context, req *item.GetItemsRequest) (*item.GeneralItem, error) {
+	res, err := u.A.ItemLastInserted(ctx)
+	if err != nil {
+		log.Println(err)
+		return nil, err
+	}
+	return res, nil
+}

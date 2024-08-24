@@ -74,3 +74,16 @@ func Delete(req *models.GetItemRequest) (string, []interface{}, error) {
 	}
 	return query, args, nil
 }
+
+func LastInserted() (string, []interface{}, error) {
+	query, args, err := squirrel.Select("*").
+		From("items").
+		OrderBy("id DESC").
+		Limit(1).
+		ToSql()
+	if err != nil {
+		log.Println(err)
+		return "", nil, err
+	}
+	return query, args, nil
+}

@@ -86,3 +86,18 @@ func (u *Adjust) Delete(ctx context.Context, req *item.GetItemRequest) (*item.De
 	}
 	return &item.DeleteResponse{Message: res.Message}, nil
 }
+
+func (u *Adjust) ItemLastInserted(ctx context.Context) (*item.GeneralItem, error) {
+	res, err := u.S.ItemLastInserted(ctx)
+	if err != nil {
+		log.Println(err)
+		return nil, err
+	}
+	return &item.GeneralItem{
+		Id:       res.ID,
+		Username: res.Username,
+		Name:     res.Name,
+		Type:     res.Type,
+		Amount:   res.Amount,
+	}, nil
+}

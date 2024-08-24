@@ -1,3 +1,5 @@
+run:
+	go run cmd/main.go
 table:
 	migrate create -dir migrations -ext sql db
 up:

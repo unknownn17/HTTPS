@@ -5,11 +5,11 @@ import (
 	"item/internal/models"
 )
 
-
-type Item interface{
-	ItemCreate(ctx context.Context,req *models.CreateItemRequest)(*models.DeleteResponse,error)
-	ItemGet(ctx context.Context,req *models.GetItemRequest)(*models.GeneralItem,error)
-	ItemGets(ctx context.Context,req *models.GetItemsRequest)([]*models.GeneralItem,error)
-	ItemUpdate(ctx context.Context,req *models.GeneralItem)(*models.DeleteResponse,error)
-	ItemDelete(ctx context.Context,req *models.GetItemRequest)(*models.DeleteResponse,error)
+type Item interface {
+	ItemCreate(ctx context.Context, req *models.CreateItemRequest) (*models.DeleteResponse, error)
+	ItemGet(ctx context.Context, req *models.GetItemRequest) (*models.GeneralItem, error)
+	ItemGets(ctx context.Context, req *models.GetItemsRequest) ([]*models.GeneralItem, error)
+	ItemUpdate(ctx context.Context, req *models.GeneralItem) (*models.DeleteResponse, error)
+	ItemDelete(ctx context.Context, req *models.GetItemRequest) (*models.DeleteResponse, error)
+	ItemLastInserted(ctx context.Context) (*models.GeneralItem, error)
 }
