@@ -1,4 +1,4 @@
 run:
 	go run cmd/main.go
 swagger:
-	swag init -g ./internal/api/handler/handler.go 
+	swag init -g ./internal/api/router/router.go -o internal/docs force 1	

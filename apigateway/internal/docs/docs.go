@@ -45,7 +45,9 @@ const docTemplate = `{
                         }
                     }
                 }
-            },
+            }
+        },
+        "/items/create": {
             "post": {
                 "description": "Creates a new item and broadcasts the creation event via Kafka.",
                 "consumes": [
@@ -269,8 +271,8 @@ var SwaggerInfo = &swag.Spec{
 	Host:             "localhost:8081",
 	BasePath:         "/",
 	Schemes:          []string{"https"},
-	Title:            "Items",
-	Description:      "",
+	Title:            "ITEMS API",
+	Description:      "This is an API for managing items.",
 	InfoInstanceName: "swagger",
 	SwaggerTemplate:  docTemplate,
 	// LeftDelim:        "{{",

@@ -5,7 +5,6 @@ import (
 	"api/internal/models"
 	"encoding/json"
 	"fmt"
-	_"api/docs"
 	"log"
 	"net/http"
 	"strconv"
@@ -25,7 +24,7 @@ type Handler struct {
 // @Param item body models.CreateItemRequest true "Item to create"
 // @Success 200 {object} map[string]string
 // @Failure 500 {object} models.Error
-// @Router /items [post]
+// @Router /items/create [post]
 func (u *Handler) Create(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 

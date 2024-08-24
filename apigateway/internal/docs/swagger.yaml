@@ -1,3 +1,4 @@
+basePath: /
 definitions:
   models.CreateItemRequest:
     properties:
@@ -28,8 +29,12 @@ definitions:
       username:
         type: string
     type: object
+host: localhost:8081
 info:
   contact: {}
+  description: This is an API for managing items.
+  title: ITEMS API
+  version: "2.0"
 paths:
   /items:
     get:
@@ -50,33 +55,6 @@ paths:
           schema:
             $ref: '#/definitions/models.Error'
       summary: Get all items
-      tags:
-      - items
-    post:
-      consumes:
-      - application/json
-      description: Creates a new item and broadcasts the creation event via Kafka.
-      parameters:
-      - description: Item to create
-        in: body
-        name: item
-        required: true
-        schema:
-          $ref: '#/definitions/models.CreateItemRequest'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            additionalProperties:
-              type: string
-            type: object
-        "500":
-          description: Internal Server Error
-          schema:
-            $ref: '#/definitions/models.Error'
-      summary: Create a new item
       tags:
       - items
   /items/{id}:
@@ -164,4 +142,34 @@ paths:
       summary: Update an item by ID
       tags:
       - items
+  /items/create:
+    post:
+      consumes:
+      - application/json
+      description: Creates a new item and broadcasts the creation event via Kafka.
+      parameters:
+      - description: Item to create
+        in: body
+        name: item
+        required: true
+        schema:
+          $ref: '#/definitions/models.CreateItemRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.Error'
+      summary: Create a new item
+      tags:
+      - items
+schemes:
+- https
 swagger: "2.0"

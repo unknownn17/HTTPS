@@ -49,6 +49,9 @@ func (u *Adjust) Get(id string) (*models.GeneralItem, error) {
 		log.Println(err)
 		return nil, err
 	}
+	if res.Username=="" && res.Name==""{
+		return nil,errors.New("there is no any item with this id")
+	}
 	return &models.GeneralItem{ID: res.Id, Username: res.Username, Name: res.Name, Type: res.Type, Amount: res.Amount}, nil
 }
 
