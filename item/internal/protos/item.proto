@@ -1,0 +1,40 @@
+syntax="proto3";
+
+option go_package="/item";
+
+message CreateItemRequest{
+    string username=1;
+    string name=2;
+    string type=3;
+    int32 amount=4;
+}
+
+message GeneralItem{
+    int32 id=1;
+    string username=2;
+    string name=3;
+    string type=4;
+    int32 amount=5;
+}
+
+message GetItemRequest{
+    int32 id=1;
+}
+
+message GetItemsRequest{}
+
+message GetItemsResponse{
+    repeated GeneralItem items=1;
+}
+
+message DeleteResponse{
+    string message=1;
+}
+
+service ItemService{
+    rpc ItemCreate(CreateItemRequest) returns(DeleteResponse);
+    rpc ItemGet(GetItemRequest) returns(GeneralItem);
+    rpc ItemsGet(GetItemsRequest) returns(GetItemsResponse);
+    rpc ItemUpdate(GeneralItem) returns(DeleteResponse);
+    rpc ItemDelete(GetItemRequest) returns(DeleteResponse);
+}
